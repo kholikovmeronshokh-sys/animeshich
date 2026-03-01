@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animeshich</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Teko:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg bg-a"></div>
+  <div class="bg bg-b"></div>
+
+  <header class="topbar container">
+    <a href="/home" class="brand" data-route-link>ANIMESHICH <span>PRO</span></a>
+    <nav class="nav" id="mainNav">
+      <a href="/home" data-route-link>Home</a>
+      <a href="/news" data-route-link>News</a>
+      <a href="/top" data-route-link>Top</a>
+      <a href="/thebest" data-route-link>TheBest</a>
+      <a href="/popular" data-route-link>Popular</a>
+      <a href="/random" data-route-link>Random</a>
+      <a href="/mylist" data-route-link>MyList</a>
+    </nav>
+  </header>
+
+  <main class="container main">
+    <section class="hero card fade-up">
+      <div>
+        <p class="hero-tag">Ваш личный аниме-центр</p>
+        <h1 id="heroTitle">Home</h1>
+        <p id="heroDesc" class="muted">Быстрый каталог с фильтрами, новостями, избранным и переводом описаний.</p>
+      </div>
+      <aside id="featuredBox" class="featured">
+        <p class="muted">Загрузка...</p>
+      </aside>
+    </section>
+
+    <section class="controls card fade-up delay-1" id="catalogControls">
+      <div class="control-grid">
+        <input id="searchInput" type="text" placeholder="Поиск: Naruto, One Piece, Bleach..." />
+
+        <select id="typeSelect">
+          <option value="">Все форматы</option>
+          <option value="tv">TV</option>
+          <option value="movie">Фильм</option>
+          <option value="ova">OVA</option>
+          <option value="ona">ONA</option>
+          <option value="special">Спешл</option>
+        </select>
+
+        <select id="statusSelect">
+          <option value="">Любой статус</option>
+          <option value="airing">Выходит</option>
+          <option value="complete">Завершено</option>
+          <option value="upcoming">Анонс</option>
+        </select>
+
+        <select id="scoreSelect">
+          <option value="0">Любой рейтинг</option>
+          <option value="7">От 7.0</option>
+          <option value="8">От 8.0</option>
+          <option value="9">От 9.0</option>
+        </select>
+
+        <select id="sortSelect">
+          <option value="score_desc">Сортировка: рейтинг</option>
+          <option value="popularity_desc">Сортировка: популярность</option>
+          <option value="title_asc">Сортировка: название</option>
+          <option value="start_date_desc">Сортировка: новинки</option>
+        </select>
+
+        <select id="topSizeSelect">
+          <option value="10">Top 10</option>
+          <option value="50">Top 50</option>
+          <option value="100">Top 100</option>
+        </select>
+
+        <div class="inline-actions">
+          <button class="btn btn-primary" id="btnApply" type="button">Применить</button>
+          <button class="btn btn-ghost" id="btnReset" type="button">Сброс</button>
+        </div>
+      </div>
+
+      <div class="genre-row">
+        <span>Жанры:</span>
+        <div id="genreChips" class="chips"></div>
+      </div>
+
+      <div class="toolbar">
+        <p id="statusText" class="muted">Готово</p>
+        <div class="toolbar-actions">
+          <button class="btn btn-ghost hidden" id="btnRandomRefresh" type="button">Обновить Random</button>
+          <button class="btn btn-ghost" id="btnFavorites" type="button">Избранное</button>
+          <button class="btn btn-ghost" id="btnView" type="button">Вид: сетка</button>
+          <div class="pager">
+            <button class="btn btn-ghost" id="btnPrev" type="button">Назад</button>
+            <span id="pageText">Стр. 1</span>
+            <button class="btn btn-ghost" id="btnNext" type="button">Вперед</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="grid" class="grid fade-up delay-2"></section>
+
+    <section id="myListSection" class="card mylist hidden">
+      <h2>Мой список</h2>
+      <div class="mylist-row">
+        <input id="watchInput" type="text" placeholder="Добавить аниме..." />
+        <button class="btn btn-primary" id="watchAdd" type="button">Добавить</button>
+      </div>
+      <ul id="watchItems"></ul>
+    </section>
+  </main>
+
+  <dialog id="animeModal" class="anime-modal">
+    <button class="modal-close" id="modalClose" type="button">✕</button>
+    <div id="modalBody" class="modal-body"></div>
+  </dialog>
+
+  <div id="ageGate" class="age-gate hidden">
+    <div class="age-card">
+      <h2>Возрастной доступ</h2>
+      <p>Введите ваш возраст перед входом на сайт.</p>
+      <input id="ageInput" type="number" min="1" max="99" placeholder="Ваш возраст" />
+      <button id="ageEnterBtn" class="btn btn-primary" type="button">Войти</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
